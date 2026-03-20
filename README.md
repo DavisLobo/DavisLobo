@@ -58,7 +58,6 @@ I stand out for my **curiosity**, **organization**, and **communication skills**
 - 3 multi-step tests split between **pre/post-intervention** phases
 - Full statistical pipeline from raw collection to evidence-based conclusions
 
----
 
 ### 🏃 Physical Activity Classification with Wearable Sensors ✅
 > End-to-end Data Science pipeline over real IMU sensor data from 9 subjects performing 18 physical activities.
@@ -67,7 +66,6 @@ I stand out for my **curiosity**, **organization**, and **communication skills**
 - **Random Forest classifier** distinguishing rest, walking and running from raw sensor signals
 - Heart rate zone detection and **per-activity caloric expenditure** estimation via MET methodology
 
----
 
 ### 🏦 SQL-Powered Web App for Financial Institutions ⏳ *(in progress)*
 > Bringing SQL-like functionality to a front-end interface — no commands required.
@@ -75,7 +73,6 @@ I stand out for my **curiosity**, **organization**, and **communication skills**
 - Covers: **products**, **credit score**, **payment behavior**, and **investor profile**
 - Built to empower non-technical teams with instant, reliable insights
 
----
 
 ### 🖥️ Linux Home Lab — Local Server & Virtualization ⏳ *(in progress)*
 > A personal sandbox for data storage, virtualization, and process management.
@@ -100,17 +97,9 @@ I stand out for my **curiosity**, **organization**, and **communication skills**
 ## 📌 Interests
 
 ```
+ Data Processing             →   Turn unstructured inputs into actionable outputs
  Machine Learning & AI       →   Predictive models that actually work
  KPI Analysis                →   Metrics that drive real decisions
  Data Engineering            →   Clean pipelines, reliable foundations
- Linux & Home Labs           →   Tinkering, learning, breaking things (safely)
- Sports Science              →   Where data meets human performance
+ Servers & IoT               →   Tinkering, learning, breaking things (safely)
 ```
-
----
-
-<div align="center">
-
-*"Data is just information — until you ask the right question."*
-
-</div>
