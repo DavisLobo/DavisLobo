@@ -41,11 +41,11 @@
 
 ## 👋 About Me
 
-My journey into **Data Science** began through scientific research — where I discovered the power of data to answer complex questions and drive meaningful decisions.
+My journey into Data Science began through scientific research — where I discovered the power of data to answer complex questions and drive meaningful decisions.
 
-Today, I focus on **predictive analytics** and **data modeling**, building Machine Learning and AI solutions that increase process efficiency and optimize resources. I'm especially passionate about using data to evaluate **KPIs** and design intelligent models that solve real-world problems.
+Today, I focus on predictive analytics and data modeling, building Machine Learning and AI solutions that increase process efficiency and optimize resources. I'm especially passionate about using data to evaluate KPIs and design intelligent models that solve real-world problems.
 
-I stand out for my **curiosity**, **organization**, and **communication skills**. I thrive on challenges and new ideas — I love going deep into concepts and expanding my worldview. 🌍
+I stand out for my curiosity, organization, and communication skills. I thrive on challenges and new ideas — I love going deep into concepts and expanding my worldview. 🌍
 
 ---
 
