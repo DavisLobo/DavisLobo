@@ -1,16 +1,16 @@
 ## 👋 About Me
 
-My journey into Data Science began through scientific research — where I discovered the power of data to answer complex questions and drive meaningful decisions.
+My journey into Data Science began through scientific research where I discovered the power of data to answer complex questions and drive meaningful decisions.
 
 Today, I focus on predictive analytics and data modeling, building Machine Learning and AI solutions that increase process efficiency and optimize resources. I'm especially passionate about using data to evaluate KPIs and design intelligent models that solve real-world problems.
 
-I stand out for my curiosity, organization, and communication skills. I thrive on challenges and new ideas — I love going deep into concepts and expanding my worldview. 🌍
+I stand out for my curiosity, organization, and communication skills. I thrive on challenges and going deep into concepts and expanding my worldview. 🌍
 
 ---
 
 ## 🚀 Featured Projects
 
-### 📊 Statistical Analysis in Sports Science Research ✅
+### 📊 Statistical Analysis in Sports Science Research 
 > Evaluated performance indicators validated by scientific literature.
 - **100+ individuals** sampled across the study
 - **1,000+ data points** collected, cleaned, and structured
@@ -18,12 +18,12 @@ I stand out for my curiosity, organization, and communication skills. I thrive o
 - Full statistical pipeline from raw collection to evidence-based conclusions
 
 
-### 🏃 Physical Activity Classification with Wearable Sensors ✅
+### 🏃 Physical Activity Classification with Wearable Sensors
 > End-to-end Data Science pipeline over real IMU sensor data from 9 subjects performing 18 physical activities.
-- **3 IMU sensors** (hand, chest, ankle) capturing accelerometer, gyroscope, magnetometer and heart rate at **100 Hz**
 - **Full preprocessing pipeline** — missing value interpolation, noise filtering and feature engineering (Euclidean acceleration magnitude)
 - **Random Forest classifier** distinguishing rest, walking and running from raw sensor signals
 - Heart rate zone detection and **per-activity caloric expenditure** estimation via MET methodology
+- Implemented ML model with 98% accuracy in Classification Report
 
 
 ### 🏦 SQL-Powered Web App for Financial Institutions ⏳ *(in progress)*
