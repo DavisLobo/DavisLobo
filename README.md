@@ -1,9 +1,3 @@
-<div align="center">
-
-</div>
-
----
-
 ## 👋 About Me
 
 My journey into Data Science began through scientific research — where I discovered the power of data to answer complex questions and drive meaningful decisions.
