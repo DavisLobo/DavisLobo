@@ -35,11 +35,12 @@ I stand out for my curiosity, organization, and communication skills. I thrive o
 - Built to empower non-technical teams with instant, reliable insights
 
 
-### 🖥️ Linux Home Lab — Local Server & Virtualization ⏳ *(in progress)*
+### 🖥️ Linux Home Lab — Local Server & Virtualization
 > A personal sandbox for data storage, virtualization, and process management.
-- Virtualization with **KVM** and **LXC** containers
+- Virtualization with **KVM** and **LXC** containers on Docker
 - Memory management for concurrent running processes
-- Hardware: Raspberry Pi 3
+- Hardware: Rock64
+- OS: Diet-Pi (Debian)
 
 ---
 
