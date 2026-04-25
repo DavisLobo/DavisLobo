@@ -1,68 +1,64 @@
-## 👋 About Me
+## 👋 Sobre Mim
 
-My journey into Data Science began through scientific research where I discovered the power of data to answer complex questions and drive meaningful decisions.
+Estudante de Sistemas de Informação com base teórica sobre linguagens de programação, processos do
+desenvolvimento de software, algoritmos e estruturas de dados, arquitetura empresarial, computação em nuvem,
+matemática e estatística. Tenho fortes habilidades de comunicação, resolução de problemas e pensamento
+analítico.
 
-Today, I focus on predictive analytics and data modeling, building Machine Learning and AI solutions that increase process efficiency and optimize resources. I'm especially passionate about using data to evaluate KPIs and design intelligent models that solve real-world problems.
+Me destaco pela curiosidade, organização e comunicação. Me motivo muito com desafios e com novas ideias. Gosto de me aprofundar em conceitos e ampliar minha visão de mundo :)
 
-I stand out for my curiosity, organization, and communication skills. I thrive on challenges and going deep into concepts and expanding my worldview. 🌍
+📚 Estudos atuais: Probabilidade e Estatística, Arquitetura de Computadores, Fundamentos da Computação em Nuvem, Desenvolvimento de Aplicativos Web, Algoritmos e Estruturas de Dados.
+<br>
 
-📚 Currently studying: Probability & Statistics, Computer Architecture, Data Analytics with Cloud Computing, Web Apps development, Algorithms & Data Structures and GenAI.
+## 🧰 Stack
+<br>
 
----
-
-## 🚀 Featured Projects
-
-### 📊 Statistical Analysis in Sports Science Research 
-> Evaluated performance indicators validated by scientific literature.
-- **100+ individuals** sampled across the study
-- **1,000+ data points** collected, cleaned, and structured
-- 3 multi-step tests split between pre/post-intervention phases
-- Full statistical pipeline from raw collection to evidence-based conclusions
+![Python](https://img.shields.io/badge/-Python-blue?logo=python&logoColor=white) ![C](https://img.shields.io/badge/-C-informational?logo=c&logoColor=white) ![PHP](https://img.shields.io/badge/-PHP-purple?logo=php&logoColor=white) ![SQL](https://img.shields.io/badge/-SQL-00758F?logo=mysql&logoColor=white) ![JavaScript](https://img.shields.io/badge/-JavaScript-yellow?logo=javascript&logoColor=white) ![HTML](https://img.shields.io/badge/-HTML-e34c26?logo=html5&logoColor=white) ![CSS](https://img.shields.io/badge/-CSS-1572B6?logo=css3&logoColor=white) <br> <br> ![Docker](https://img.shields.io/badge/-Docker-2496ED?logo=docker&logoColor=white) ![Git](https://img.shields.io/badge/-Git-F05032?logo=git&logoColor=white) ![Linux](https://img.shields.io/badge/-Linux-FCC624?logo=linux&logoColor=000)
+<br><br><br><br>
 
 
-### 🏃 Physical Activity Classification with Wearable Sensors
-> End-to-end Data Science pipeline over real IMU sensor data from 9 subjects performing 18 physical activities.
-- **Full preprocessing pipeline** — missing value interpolation, noise filtering and feature engineering (Euclidean acceleration magnitude)
-- **Random Forest classifier** distinguishing rest, walking and running from raw sensor signals
-- Heart rate zone detection and per-activity caloric expenditure estimation via MET methodology
-- Implemented ML model with **98% accuracy** in Classification Report
+## 🚀 Projetos em Destaque
+
+### 📊 Análise Estatística em Pesquisa de Ciências do Esporte
+> Avaliação de indicadores de desempenho validados pela literatura científica.
+- **Mais de 100 indivíduos** amostrados ao longo do estudo
+- **Mais de 1.000 pontos de dados** coletados, limpos e estruturados
+- 3 testes em múltiplas etapas divididos entre fases pré/pós-intervenção
+- Pipeline estatístico completo, desde a coleta bruta até conclusões baseadas em evidências
 
 
-### 🏦 SQL-Powered Web App for Financial Institutions ⏳ *(in progress)*
-> Bringing SQL-like functionality to a front-end interface — no commands required.
-- Filter, sort, and query client data across multiple dimensions
-- Covers: **products**, **credit score**, **payment behavior**, and **investor profile**
-- Built to empower non-technical teams with instant, reliable insights
+### 🏃 Classificação de Atividade Física com Sensores Vestíveis
+> Pipeline de Ciência de Dados de ponta a ponta com dados reais de IMU de 9 indivíduos realizando 18 atividades físicas.
+- **Pipeline completo de pré-processamento** — interpolação de valores ausentes, filtragem de ruído e engenharia de recursos (magnitude da aceleração Euclidiana)
+- **Classificador Random Forest** distinguindo repouso, caminhada e corrida a partir de sinais de sensores brutos
+- Detecção de zonas de frequência cardíaca e estimativa de gasto calórico por atividade usando metodologia MET
+- Modelo de ML com **98% de acurácia** no Relatório de Classificação
 
 
-### 🖥️ Linux Home Lab — Local Server & Virtualization
-> A personal sandbox for data storage, virtualization, and process management.
-- Virtualization with **KVM** and **LXC** containers on Docker
-- Memory management for concurrent running processes
+### 🏦 Web App com SQL para Instituições Financeiras ⏳ *(em andamento)*
+> Trazendo funcionalidades semelhantes ao SQL para uma interface front-end — sem necessidade de comandos.
+- Filtrar, ordenar e consultar dados de clientes por múltiplas dimensões
+- Cobertura: **produtos**, **score de crédito**, **comportamento de pagamento** e **perfil do investidor**
+- Construído para capacitar equipes não técnicas com insights rápidos e confiáveis
+
+
+### 🖥️ HomeLab com Linux — Servidor Local & Virtualização
+> Um sandbox pessoal para armazenamento de dados, virtualização e gerenciamento de processos.
+- Virtualização e containers no Docker
+- Gestão de memória para processos concorrentes
 - Hardware: Rock64
-- OS: Diet-Pi (Debian)
+- Sistema Operacional: Diet-Pi (Debian)
 
 ---
 
-## 🛠️ Tools & Languages
-
-<div align="center">
-
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![SQL](https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=postgresql&logoColor=white)
-![Power BI](https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
-
-</div>
-
----
-
-## 📌 Interests
+## 📌 Interesses
 
 ```
- Data Processing             →   Turn unstructured inputs into actionable outputs
- Data Analysis               →   Create new insights and business solutions from data
- Machine Learning & AI       →   Predictive models that actually work
- KPI Analysis                →   Metrics that drive real decisions
- Data Engineering            →   Clean pipelines, reliable foundations
- Servers & IoT               →   Tinkering, learning, breaking things (safely)
+ Processamento de Dados      →   Transformar dados não estruturados em resultados
+ Machine Learning & IA       →   Modelos preditivos que realmente funcionam
+ Análise de KPIs             →   Métricas que impulsionam decisões reais
+ Engenharia de Dados         →   Pipelines limpos, fundamentos confiáveis
+ Desenvolvimento de Software →   Criar soluções e produtos inovadores
+ Servidores & IoT            →   Brincar, aprender, quebrar coisas (de forma segura)
+
 ```
