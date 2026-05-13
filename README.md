@@ -13,7 +13,7 @@ Me destaco pela curiosidade, organização e comunicação. Me motivo muito com 
 ## 🧰 Stack
 <br>
 
-![Python](https://img.shields.io/badge/-Python-blue?logo=python&logoColor=white) ![C](https://img.shields.io/badge/-C-informational?logo=c&logoColor=white) ![PHP](https://img.shields.io/badge/-PHP-purple?logo=php&logoColor=white) ![SQL](https://img.shields.io/badge/-SQL-00758F?logo=mysql&logoColor=white) ![JavaScript](https://img.shields.io/badge/-JavaScript-yellow?logo=javascript&logoColor=white) ![HTML](https://img.shields.io/badge/-HTML-e34c26?logo=html5&logoColor=white) ![CSS](https://img.shields.io/badge/-CSS-1572B6?logo=css3&logoColor=white) <br> <br> ![Docker](https://img.shields.io/badge/-Docker-2496ED?logo=docker&logoColor=white) ![Git](https://img.shields.io/badge/-Git-F05032?logo=git&logoColor=white) ![Linux](https://img.shields.io/badge/-Linux-FCC624?logo=linux&logoColor=000)
+![Python](https://img.shields.io/badge/-Python-blue?logo=python&logoColor=white) ![C](https://img.shields.io/badge/-C-informational?logo=c&logoColor=white) <img width="60" height="22" alt="C#" src="https://github.com/user-attachments/assets/7037bce7-17d5-4cda-b23f-58e9b294a588" /> ![SQL](https://img.shields.io/badge/-SQL-00758F?logo=mysql&logoColor=white) ![JavaScript](https://img.shields.io/badge/-JavaScript-yellow?logo=javascript&logoColor=white) ![HTML](https://img.shields.io/badge/-HTML-e34c26?logo=html5&logoColor=white) ![CSS](https://img.shields.io/badge/-CSS-1572B6?logo=css3&logoColor=white) <br> <br> ![Docker](https://img.shields.io/badge/-Docker-2496ED?logo=docker&logoColor=white) ![Git](https://img.shields.io/badge/-Git-F05032?logo=git&logoColor=white) ![Linux](https://img.shields.io/badge/-Linux-FCC624?logo=linux&logoColor=000)
 <br><br><br><br>
 
 
