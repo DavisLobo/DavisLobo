@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>Davis Lobo</title>
+
+    <style>
+        :root {
+            --black: #020403;
+            --terminal: #07100a;
+            --terminal-light: #0b160e;
+            --green: #39ff88;
+            --green-soft: #20c968;
+            --green-dim: #14743e;
+            --amber: #ffbf5f;
+            --red: #ff5f56;
+            --text: #d8ffe7;
+            --muted: #6fae83;
+            --border: rgba(57, 255, 136, 0.18);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            min-height: 100%;
+        }
+
+        body {
+            background: var(--black);
+            color: var(--text);
+            font-family:
+                "JetBrains Mono",
+                "Fira Code",
+                "Cascadia Code",
+                "SFMono-Regular",
+                Consolas,
+                monospace;
+            overflow-x: hidden;
+        }
+
+        /* =========================================================
+           BACKGROUND
+           ========================================================= */
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: -50%;
+            z-index: -4;
+            pointer-events: none;
+
+            background:
+                linear-gradient(
+                    rgba(57, 255, 136, 0.035) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(57, 255, 136, 0.035) 1px,
+                    transparent 1px
+                );
+
+            background-size: 48px 48px;
+
+            transform: perspective(500px) rotateX(55deg) translateY(-8%);
+            animation: gridScroll 14s linear infinite;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: 20;
+            pointer-events: none;
+
+            background:
+                radial-gradient(
+                    ellipse at center,
+                    transparent 45%,
+                    rgba(0, 0, 0, 0.55) 100%
+                );
+        }
+
+        @keyframes gridScroll {
+            from {
+                background-position: 0 0, 0 0;
+            }
+
+            to {
+                background-position: 0 48px, 48px 0;
+            }
+        }
+
+        /* =========================================================
+           FLOATING TERMINAL COMMANDS
+           ========================================================= */
+
+        .terminal-stream {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            z-index: -2;
+            pointer-events: none;
+            opacity: 0.32;
+        }
+
+        .terminal-stream span {
+            position: absolute;
+            white-space: nowrap;
+            color: var(--green-dim);
+            font-size: 11px;
+            animation: terminalFloat linear infinite;
+        }
+
+        .terminal-stream span:nth-child(1) {
+            left: 5%;
+            top: 12%;
+            animation-duration: 22s;
+        }
+
+        .terminal-stream span:nth-child(2) {
+            left: 58%;
+            top: 18%;
+            animation-duration: 27s;
+        }
+
+        .terminal-stream span:nth-child(3) {
+            left: 15%;
+            top: 72%;
+            animation-duration: 25s;
+        }
+
+        .terminal-stream span:nth-child(4) {
+            left: 70%;
+            top: 78%;
+            animation-duration: 20s;
+        }
+
+        .terminal-stream span:nth-child(5) {
+            left: 32%;
+            top: 45%;
+            animation-duration: 30s;
+        }
+
+        .terminal-stream span:nth-child(6) {
+            left: 82%;
+            top: 52%;
+            animation-duration: 24s;
+        }
+
+        .terminal-stream span:nth-child(7) {
+            left: 3%;
+            top: 35%;
+            animation-duration: 28s;
+        }
+
+        .terminal-stream span:nth-child(8) {
+            left: 45%;
+            top: 90%;
+            animation-duration: 26s;
+        }
+
+        @keyframes terminalFloat {
+            0% {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+
+            15%,
+            80% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+        }
+
+        /* =========================================================
+           CRT SCANLINES
+           ========================================================= */
+
+        .scanlines {
+            position: fixed;
+            inset: 0;
+            z-index: 21;
+            pointer-events: none;
+
+            background:
+                repeating-linear-gradient(
+                    to bottom,
+                    transparent 0,
+                    transparent 3px,
+                    rgba(255, 255, 255, 0.018) 4px
+                );
+
+            animation: scanlineMove 8s linear infinite;
+        }
+
+        @keyframes scanlineMove {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(4px);
+            }
+        }
+
+        /* =========================================================
+           BOOT SCREEN
+           ========================================================= */
+
+        #boot-screen {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(10, 35, 18, 0.35),
+                    transparent 55%
+                ),
+                #010201;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            padding: 30px;
+            transition:
+                opacity 1.2s ease,
+                visibility 1.2s ease;
+        }
+
+        #boot-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .boot-console {
+            width: min(1100px, 100%);
+            margin: auto;
+
+            font-size: clamp(10px, 1.2vw, 13px);
+            line-height: 1.65;
+
+            text-shadow:
+                0 0 5px rgba(57, 255, 136, 0.35);
+
+            color: #b8d8c3;
+        }
+
+        .boot-header {
+            color: var(--green);
+            margin-bottom: 18px;
+        }
+
+        .boot-logo {
+            color: var(--green);
+            font-weight: bold;
+        }
+
+        .boot-line {
+            min-height: 1.65em;
+            white-space: pre-wrap;
+        }
+
+        .boot-line.ok {
+            color: #b9d9c2;
+        }
+
+        .boot-line.ok::first-letter {
+            color: var(--green);
+        }
+
+        .boot-line.warn {
+            color: var(--amber);
+        }
+
+        .boot-line.info {
+            color: #a5c7b1;
+        }
+
+        .boot-line.kernel {
+            color: #b9cfc1;
+        }
+
+        .boot-line.service {
+            color: #9fbea9;
+        }
+
+        .boot-line.dim {
+            color: #52715e;
+        }
+
+        .boot-line .ok-label {
+            color: var(--green);
+            font-weight: bold;
+        }
+
+        .boot-line .warn-label {
+            color: var(--amber);
+            font-weight: bold;
+        }
+
+        .boot-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1em;
+            vertical-align: -2px;
+            margin-left: 2px;
+            background: var(--green);
+            animation: cursorBlink 0.8s steps(1) infinite;
+        }
+
+        @keyframes cursorBlink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .boot-skip {
+            position: fixed;
+            right: 22px;
+            bottom: 18px;
+
+            border: 1px solid var(--green-dim);
+            background: rgba(2, 4, 3, 0.8);
+            color: var(--muted);
+
+            padding: 7px 11px;
+
+            font-family: inherit;
+            font-size: 10px;
+
+            cursor: pointer;
+
+            transition:
+                color 0.2s ease,
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .boot-skip:hover {
+            color: var(--green);
+            border-color: var(--green);
+            box-shadow: 0 0 12px rgba(57, 255, 136, 0.15);
+        }
+
+        /* =========================================================
+           LOGIN SCREEN
+           ========================================================= */
+
+        #login-screen {
+            position: fixed;
+            inset: 0;
+            z-index: 90;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #010201;
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition:
+                opacity 0.8s ease,
+                visibility 0.8s ease;
+        }
+
+        #login-screen.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .login-console {
+            width: min(620px, calc(100% - 40px));
+            font-size: clamp(11px, 1.3vw, 14px);
+            line-height: 1.8;
+        }
+
+        .login-ascii {
+            color: var(--green);
+            margin-bottom: 24px;
+            white-space: pre;
+            overflow: hidden;
+        }
+
+        .login-line {
+            color: #abc5b3;
+        }
+
+        .login-user {
+            color: var(--green);
+        }
+
+        .login-password {
+            color: var(--amber);
+        }
+
+        .login-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 15px;
+            background: var(--green);
+            vertical-align: -2px;
+            animation: cursorBlink 0.75s steps(1) infinite;
+        }
+
+        /* =========================================================
+           MAIN PAGE
+           ========================================================= */
+
+        #main-page {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 40px 20px;
+
+            opacity: 0;
+            transform: scale(0.985);
+
+            transition:
+                opacity 1.2s ease,
+                transform 1.2s ease;
+        }
+
+        #main-page.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .terminal {
+            width: min(760px, 100%);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(11, 22, 14, 0.96),
+                    rgba(3, 8, 5, 0.98)
+                );
+
+            border: 1px solid var(--border);
+
+            box-shadow:
+                0 0 0 1px rgba(57, 255, 136, 0.025),
+                0 0 60px rgba(57, 255, 136, 0.07),
+                inset 0 0 50px rgba(57, 255, 136, 0.018);
+
+            overflow: hidden;
+
+            position: relative;
+        }
+
+        .terminal::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(57, 255, 136, 0.018),
+                    transparent
+                );
+
+            animation: terminalShimmer 6s ease-in-out infinite;
+        }
+
+        @keyframes terminalShimmer {
+            0%,
+            100% {
+                transform: translateX(-100%);
+            }
+
+            50% {
+                transform: translateX(100%);
+            }
+        }
+
+        .terminal-header {
+            height: 38px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 14px;
+
+            background: rgba(0, 0, 0, 0.38);
+            border-bottom: 1px solid rgba(57, 255, 136, 0.1);
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 7px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .dot.red {
+            background: var(--red);
+            box-shadow: 0 0 7px rgba(255, 95, 86, 0.4);
+        }
+
+        .dot.amber {
+            background: var(--amber);
+            box-shadow: 0 0 7px rgba(255, 191, 95, 0.35);
+        }
+
+        .dot.green {
+            background: var(--green-soft);
+            box-shadow: 0 0 7px rgba(32, 201, 104, 0.35);
+        }
+
+        .terminal-title {
+            flex: 1;
+            text-align: center;
+
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .terminal-body {
+            padding: 42px clamp(24px, 6vw, 62px) 30px;
+        }
+
+        .boot-message {
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .boot-message .ok {
+            color: var(--green);
+        }
+
+        .prompt {
+            font-size: 12px;
+            margin-bottom: 13px;
+        }
+
+        .prompt-user {
+            color: var(--green);
+        }
+
+        .prompt-path {
+            color: var(--amber);
+        }
+
+        .prompt-symbol {
+            color: var(--text);
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+
+            margin-bottom: 28px;
+        }
+
+        .avatar {
+            width: 88px;
+            height: 88px;
+
+            border-radius: 50%;
+
+            object-fit: cover;
+
+            border: 1px solid var(--green);
+
+            filter:
+                grayscale(0.7)
+                sepia(0.3)
+                hue-rotate(75deg)
+                saturate(1.5)
+                brightness(0.85);
+
+            box-shadow:
+                0 0 0 4px rgba(57, 255, 136, 0.04),
+                0 0 22px rgba(57, 255, 136, 0.18);
+        }
+
+        .identity {
+            min-width: 0;
+        }
+
+        h1 {
+            color: var(--green);
+
+            font-size: clamp(28px, 5vw, 42px);
+            letter-spacing: -1.5px;
+
+            margin-bottom: 8px;
+
+            text-shadow:
+                0 0 10px rgba(57, 255, 136, 0.25);
+
+            animation: phosphorFlicker 5s infinite;
+        }
+
+        @keyframes phosphorFlicker {
+            0%,
+            94%,
+            100% {
+                opacity: 1;
+            }
+
+            95% {
+                opacity: 0.82;
+            }
+
+            96% {
+                opacity: 1;
+            }
+
+            97% {
+                opacity: 0.9;
+            }
+        }
+
+        .subtitle {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .command {
+            color: var(--muted);
+            font-size: 12px;
+            margin: 26px 0 16px;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 7px;
+            height: 14px;
+
+            margin-left: 4px;
+            vertical-align: -2px;
+
+            background: var(--green);
+
+            animation: cursorBlink 0.9s steps(1) infinite;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .link {
+            position: relative;
+
+            display: flex;
+            align-items: center;
+            gap: 15px;
+
+            padding: 14px 15px;
+
+            color: var(--text);
+            text-decoration: none;
+
+            border: 1px solid rgba(57, 255, 136, 0.08);
+            background: rgba(57, 255, 136, 0.015);
+
+            transition:
+                transform 0.2s ease,
+                border-color 0.2s ease,
+                background 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .link::before {
+            content: ">";
+
+            position: absolute;
+            left: -14px;
+
+            color: var(--green);
+
+            opacity: 0;
+            transform: translateX(-5px);
+
+            transition:
+                opacity 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .link:hover {
+            transform: translateX(8px);
+
+            border-color: rgba(57, 255, 136, 0.32);
+
+            background: rgba(57, 255, 136, 0.035);
+
+            box-shadow:
+                0 0 22px rgba(57, 255, 136, 0.05);
+        }
+
+        .link:hover::before {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .link-icon {
+            width: 22px;
+            height: 22px;
+
+            flex-shrink: 0;
+
+            color: var(--green);
+        }
+
+        .link-content {
+            min-width: 0;
+        }
+
+        .link-title {
+            display: block;
+
+            color: var(--green);
+
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .link-description {
+            display: block;
+
+            color: var(--muted);
+
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        footer {
+            margin-top: 30px;
+
+            color: #42634e;
+            font-size: 10px;
+            text-align: center;
+        }
+
+        /* =========================================================
+           RESPONSIVE
+           ========================================================= */
+
+        @media (max-width: 600px) {
+            #boot-screen {
+                padding: 18px;
+            }
+
+            .boot-console {
+                line-height: 1.55;
+            }
+
+            .boot-skip {
+                right: 12px;
+                bottom: 12px;
+            }
+
+            .terminal-body {
+                padding: 30px 22px 24px;
+            }
+
+            .profile {
+                align-items: flex-start;
+            }
+
+            .avatar {
+                width: 70px;
+                height: 70px;
+            }
+
+            h1 {
+                font-size: 29px;
+            }
+        }
+
+        /* =========================================================
+           REDUCED MOTION
+           ========================================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+            }
+
+            #boot-screen,
+            #login-screen,
+            #main-page {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================================================
+         BACKGROUND
+         ========================================================= -->
+
+    <div class="terminal-stream" aria-hidden="true">
+        <span>$ sudo systemctl status projects.service</span>
+        <span>$ git commit -m "build: new project"</span>
+        <span>user@davis:~$ python3 analysis.py</span>
+        <span>$ npm run build --production</span>
+        <span>root@localhost:~# ./deploy.sh</span>
+        <span>$ git push origin main</span>
+        <span>user@davis:~/projects$ ls -la</span>
+        <span>$ ./compile --release --optimized</span>
+    </div>
+
+    <div class="scanlines"></div>
+
+    <!-- =========================================================
+         VERBOSE LINUX BOOT
+         ========================================================= -->
+
+    <section id="boot-screen" aria-label="System boot sequence">
+
+        <div class="boot-console">
+
+            <div class="boot-header">
+                <span class="boot-logo">DINUX</span>
+                <span> GNU/Linux  •  x86_64</span>
+            </div>
+
+            <div id="boot-output"></div>
+
+            <span class="boot-cursor"></span>
+
+        </div>
+
+        <button
+            class="boot-skip"
+            id="skip-boot"
+            type="button"
+        >
+            [ skip boot ]
+        </button>
+
+    </section>
+
+    <!-- =========================================================
+         LOGIN
+         ========================================================= -->
+
+    <section id="login-screen" aria-label="Linux login">
+
+        <div class="login-console">
+
+            <div class="login-ascii">
+ ____             _     
+|  _ \  __ ___   (_)___ 
+| | | |/ _` \ \ / / __|
+| |_| | (_| |\ V /\__ \
+|____/ \__,_| \_/ |___/
+            </div>
+
+            <div class="login-line">
+                davis-linux login:
+                <span class="login-user">davis</span>
+            </div>
+
+            <div class="login-line">
+                Password:
+                <span class="login-password">••••••••</span>
+            </div>
+
+            <div class="login-line">
+                Last login: today from localhost
+            </div>
+
+            <div class="login-line">
+                <span class="login-user">davis@localhost</span>:~$
+                <span class="login-cursor"></span>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =========================================================
+         MAIN HOMEPAGE
+         ========================================================= -->
+
+    <main id="main-page">
+
+        <div class="terminal">
+
+            <header class="terminal-header">
+
+                <div class="terminal-dots">
+                    <span class="dot red"></span>
+                    <span class="dot amber"></span>
+                    <span class="dot green"></span>
+                </div>
+
+                <div class="terminal-title">
+                    davis@localhost: ~
+                </div>
+
+            </header>
+
+            <div class="terminal-body">
+
+                <div class="boot-message">
+                    <div>
+                        <span class="ok">[ OK ]</span>
+                        Starting user session...
+                    </div>
+
+                    <div>
+                        <span class="ok">[ OK ]</span>
+                        Loading developer profile...
+                    </div>
+
+                    <div>
+                        <span class="ok">[ OK ]</span>
+                        Initializing projects...
+                    </div>
+
+                    <div>
+                        <span class="ok">[ OK ]</span>
+                        Welcome.
+                    </div>
+                </div>
+
+                <div class="prompt">
+                    <span class="prompt-user">davis@localhost</span><span class="prompt-symbol">:</span><span class="prompt-path">~</span><span class="prompt-symbol">$</span>
+                </div>
+
+                <section class="profile">
+
+                    <img
+                        class="avatar"
+                        src="https://avatars.githubusercontent.com/u/238695342?v=4"
+                        alt="Davis Lobo"
+                    >
+
+                    <div class="identity">
+
+                        <h1>Davis Lobo</h1>
+
+                        <p class="subtitle">
+                            Software, data, and technology projects.
+                        </p>
+
+                    </div>
+
+                </section>
+
+                <div class="command">
+                    <span class="prompt-user">davis@localhost</span><span class="prompt-symbol">:</span><span class="prompt-path">~</span><span class="prompt-symbol">$ ls</span>
+                    <span class="cursor"></span>
+                </div>
+
+                <nav class="links">
+
+                    <!-- GitHub -->
+
+                    <a
+                        class="link"
+                        href="https://github.com/DavisLobo"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        <svg
+                            class="link-icon"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                        >
+                            <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.38 7.86 10.9.58.11.79-.25.79-.56v-2.17c-3.2.7-3.88-1.54-3.88-1.54-.53-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.73-1.53-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.14 1.18a10.9 10.9 0 0 1 5.72 0c2.18-1.49 3.14-1.18 3.14-1.18.62 1.59.23 2.76.11 3.05.73.81 1.18 1.84 1.18 3.1 0 4.42-2.69 5.39-5.25 5.67.41.36.78 1.08.78 2.18v3.23c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/>
+                        </svg>
+
+                        <span class="link-content">
+                            <span class="link-title">github/</span>
+                            <span class="link-description">
+                                Explore my projects and source code
+                            </span>
+                        </span>
+
+                    </a>
+
+                    <!-- Donation -->
+
+                    <a
+                        class="link"
+                        href="https://nubank.com.br/cobrar/578l5/6ac024d9-3fb9-44c8-9b5e-7f8300574393"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        <svg
+                            class="link-icon"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.7"
+                            aria-hidden="true"
+                        >
+                            <rect
+                                x="3"
+                                y="3"
+                                width="18"
+                                height="18"
+                                rx="2"
+                            />
+
+                            <path d="M8 12h8M12 8v8"/>
+                        </svg>
+
+                        <span class="link-content">
+                            <span class="link-title">support.sh</span>
+                            <span class="link-description">
+                                Like what you see? Feel free to tip
+                            </span>
+                        </span>
+
+                    </a>
+
+                </nav>
+
+                <footer>
+                    © 2026 Davis Lobo
+                </footer>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+        /*
+         * =========================================================
+         * VERBOSE LINUX BOOT SEQUENCE
+         * =========================================================
+         *
+         * The timing intentionally resembles a verbose Linux startup:
+         *
+         * Firmware
+         *   ↓
+         * Bootloader
+         *   ↓
+         * Linux kernel
+         *   ↓
+         * Hardware / filesystem
+         *   ↓
+         * systemd
+         *   ↓
+         * Network / services
+         *   ↓
+         * User session
+         *   ↓
+         * Login shell
+         *   ↓
+         * Homepage
+         */
+
+        const bootScreen = document.getElementById("boot-screen");
+        const bootOutput = document.getElementById("boot-output");
+        const loginScreen = document.getElementById("login-screen");
+        const mainPage = document.getElementById("main-page");
+        const skipButton = document.getElementById("skip-boot");
+
+        let bootSkipped = false;
+        let bootTimers = [];
+
+        const bootLines = [
+
+            {
+                text: "DINUX firmware v2.6.0 starting...",
+                type: "dim",
+                delay: 300
+            },
+
+            {
+                text: "BIOS/UEFI: Initializing system hardware",
+                type: "info",
+                delay: 300
+            },
+
+            {
+                text: "CPU: x86_64 processor detected",
+                type: "kernel",
+                delay: 200
+            },
+
+            {
+                text: "Memory: 16384 MB available",
+                type: "kernel",
+                delay: 100
+            },
+
+            {
+                text: "PCI: Probing PCI hardware",
+                type: "kernel",
+                delay: 200
+            },
+
+            {
+                text: "USB: Initializing USB controller",
+                type: "kernel",
+                delay: 100
+            },
+
+            {
+                text: "Bootloader: GRUB 2.12",
+                type: "info",
+                delay: 200
+            },
+
+            {
+                text: "GRUB: Loading /boot/vmlinuz-dinux",
+                type: "info",
+                delay: 150
+            },
+
+            {
+                text: "GRUB: Loading initial ramdisk...",
+                type: "info",
+                delay: 200
+            },
+
+            {
+                text: "Linux version 6.12.0-dinux (gcc 14.2.0)",
+                type: "kernel",
+                delay: 150
+            },
+
+            {
+                text: "Command line: BOOT_IMAGE=/vmlinuz root=/dev/nvme0n1p2 ro quiet",
+                type: "kernel",
+                delay: 150
+            },
+
+            {
+                text: "x86/fpu: Supporting XSAVE feature 0x001",
+                type: "kernel",
+                delay: 150
+            },
+
+            {
+                text: "ACPI: Interpreter enabled",
+                type: "kernel",
+                delay: 200
+            },
+
+            {
+                text: "clocksource: tsc-early calibrated",
+                type: "kernel",
+                delay: 100
+            },
+
+            {
+                text: "NET: Registered PF_INET protocol family",
+                type: "kernel",
+                delay: 100
+            },
+
+            {
+                text: "nvme nvme0: detected NVMe controller",
+                type: "kernel",
+                delay: 100
+            },
+
+            {
+                text: "nvme0n1: detected 512 GiB storage device",
+                type: "kernel",
+                delay: 150
+            },
+
+            {
+                text: "EXT4-fs: mounted filesystem /dev/nvme0n1p2",
+                type: "kernel",
+                delay: 150
+            },
+
+            {
+                text: "[ OK ] Reached target Local File Systems",
+                type: "ok",
+                delay: 100
+            },
+
+            {
+                text: "[ OK ] Started Load Kernel Modules",
+                type: "ok",
+                delay: 150
+            },
+
+            {
+                text: "systemd[1]: System initialization started",
+                type: "service",
+                delay: 150
+            },
+
+            {
+                text: "systemd[1]: Detected architecture x86-64",
+                type: "service",
+                delay: 100
+            },
+
+            {
+                text: "[ OK ] Started Journal Service",
+                type: "ok",
+                delay: 150
+            },
+
+            {
+                text: "[ OK ] Mounted Kernel Debug File System",
+                type: "ok",
+                delay: 150
+            },
+
+            {
+                text: "[ OK ] Started Device Event Manager",
+                type: "ok",
+                delay: 150
+            },
+
+            {
+                text: "[ OK ] Started Network Manager",
+                type: "ok",
+                delay: 150
+            },
+
+            {
+                text: "NetworkManager: waiting for network configuration",
+                type: "service",
+                delay: 150
+            },
+
+            {
+                text: "NetworkManager: interface eth0 configured",
+                type: "service",
+                delay: 100
+            },
+
+            {
+                text: "[ OK ] Reached target Network",
+                type: "ok",
+                delay: 100
+            },
+
+            {
+                text: "[ OK ] Started D-Bus System Message Bus",
+                type: "ok",
+                delay: 150
+            },
+
+            {
+                text: "[ OK ] Started system logging service",
+                type: "ok",
+                delay: 150
+            },
+
+            {
+                text: "[ OK ] Started temporary files cleanup",
+                type: "ok",
+                delay: 150
+            },
+
+            {
+                text: "[ OK ] Started user manager for UID 1000",
+                type: "ok",
+                delay: 150
+            },
+
+            {
+                text: "systemd[1]: Starting developer environment...",
+                type: "service",
+                delay: 100
+            },
+
+            {
+                text: "[ OK ] Started Git integration service",
+                type: "ok",
+                delay: 100
+            },
+
+            {
+                text: "[ OK ] Started project workspace",
+                type: "ok",
+                delay: 100
+            },
+
+            {
+                text: "[ OK ] Reached target Multi-User System",
+                type: "ok",
+                delay: 100
+            },
+
+            {
+                text: "[ OK ] Started User Login Management",
+                type: "ok",
+                delay: 100
+            },
+
+            {
+                text: "systemd-logind: New session 1 of user davis",
+                type: "service",
+                delay: 100
+            },
+
+            {
+                text: "pam_unix: session opened for user davis",
+                type: "service",
+                delay: 100
+            },
+
+            {
+                text: "Starting user session...",
+                type: "info",
+                delay: 100
+            },
+
+            {
+                text: "[ OK ] Started Davi's developer session",
+                type: "ok",
+                delay: 100
+            },
+
+            {
+                text: "Loading shell environment...",
+                type: "info",
+                delay: 100
+            },
+
+            {
+                text: "[ OK ] Environment ready",
+                type: "ok",
+                delay: 100
+            },
+
+            {
+                text: "Launching login manager...",
+                type: "info",
+                delay: 200
+            }
+        ];
+
+        function addBootLine(line) {
+
+            if (bootSkipped) {
+                return;
+            }
+
+            const element = document.createElement("div");
+
+            element.className = `boot-line ${line.type}`;
+
+            /*
+             * Make [ OK ] and [ WARN ] visually resemble
+             * actual systemd console output.
+             */
+
+            if (line.text.startsWith("[ OK ]")) {
+
+                element.innerHTML =
+                    `<span class="ok-label">[ OK ]</span>` +
+                    line.text.substring(6);
+
+            } else if (line.text.startsWith("[ WARN ]")) {
+
+                element.innerHTML =
+                    `<span class="warn-label">[ WARN ]</span>` +
+                    line.text.substring(8);
+
+            } else {
+
+                element.textContent = line.text;
+            }
+
+            bootOutput.appendChild(element);
+
+            /*
+             * Keep the latest part of the boot log visible.
+             */
+
+            if (bootOutput.children.length > 17) {
+                bootOutput.removeChild(
+                    bootOutput.children[0]
+                );
+            }
+        }
+
+        function showLogin() {
+
+            if (bootSkipped) {
+                return;
+            }
+
+            loginScreen.classList.add("visible");
+
+            setTimeout(() => {
+                bootScreen.classList.add("hidden");
+            }, 700);
+
+            /*
+             * Simulate a short login delay before
+             * opening the actual terminal homepage.
+             */
+
+            setTimeout(() => {
+
+                loginScreen.classList.remove("visible");
+
+                setTimeout(() => {
+                    mainPage.classList.add("visible");
+                }, 500);
+
+            }, 2600);
+        }
+
+        function finishBootImmediately() {
+
+            bootSkipped = true;
+
+            bootTimers.forEach(timer => {
+                clearTimeout(timer);
+            });
+
+            bootTimers = [];
+
+            bootScreen.classList.add("hidden");
+            loginScreen.classList.remove("visible");
+
+            mainPage.classList.add("visible");
+        }
+
+        function startBoot() {
+
+            /*
+             * Respect users who have requested reduced motion.
+             * The full animation is unnecessary in this case.
+             */
+
+            if (
+                window.matchMedia(
+                    "(prefers-reduced-motion: reduce)"
+                ).matches
+            ) {
+                finishBootImmediately();
+                return;
+            }
+
+            let accumulatedDelay = 700;
+
+            bootLines.forEach(line => {
+
+                accumulatedDelay += line.delay;
+
+                const timer = setTimeout(() => {
+                    addBootLine(line);
+                }, accumulatedDelay);
+
+                bootTimers.push(timer);
+            });
+
+            /*
+             * Give the final line a moment to remain
+             * visible before moving to the login screen.
+             */
+
+            const finalTimer = setTimeout(() => {
+                showLogin();
+            }, accumulatedDelay + 850);
+
+            bootTimers.push(finalTimer);
+        }
+
+        skipButton.addEventListener(
+            "click",
+            finishBootImmediately
+        );
+
+        /*
+         * Enter / Space can also skip the boot.
+         * This makes the page feel like an actual
+         * boot screen while remaining convenient.
+         */
+
+        document.addEventListener("keydown", event => {
+
+            if (
+                !bootScreen.classList.contains("hidden") &&
+                (
+                    event.key === "Enter" ||
+                    event.key === " "
+                )
+            ) {
+                event.preventDefault();
+                finishBootImmediately();
+            }
+
+        });
+
+        startBoot();
+    </script>
+
+</body>
+</html>
+
