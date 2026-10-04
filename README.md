@@ -1,64 +1,61 @@
-## 👋 Sobre Mim
+## 👋 About Me
 
-Estudante de Sistemas de Informação com base teórica sobre linguagens de programação, processos do
-desenvolvimento de software, algoritmos e estruturas de dados, arquitetura empresarial, computação em nuvem,
-matemática e estatística. Tenho fortes habilidades de comunicação, resolução de problemas e pensamento
-analítico.
+An Information Systems student with a theoretical foundation in programming languages,software development processes, algorithms and data structures, enterprise architecture, cloud computing, mathematics, and statistics. I have strong communication, problem-solving, and analytical thinking skills.
 
-Me destaco pela curiosidade, organização e comunicação. Me motivo muito com desafios e com novas ideias. Gosto de me aprofundar em conceitos e ampliar minha visão de mundo :)
+I stand out for my curiosity, organizational skills, and communication abilities. I’m highly motivated by challenges and new ideas. I enjoy delving deeper into concepts and broadening my worldview :)
 
-📚 Estudos atuais: Probabilidade e Estatística, Arquitetura de Computadores, Fundamentos da Computação em Nuvem, Desenvolvimento de Aplicativos Web, Algoritmos e Estruturas de Dados.
+📚 Current Studies: Probability and Statistics, Computer Architecture, Fundamentals of Cloud Computing, Web Application Development, Algorithms and Data Structures.
 <br>
 
-## 🧰 Stack
+## 🧰 Tech Stack
 <br>
 
 ![Python](https://img.shields.io/badge/-Python-blue?logo=python&logoColor=white) ![C](https://img.shields.io/badge/-C-informational?logo=c&logoColor=white) <img width="60" height="22" alt="C#" src="https://github.com/user-attachments/assets/7037bce7-17d5-4cda-b23f-58e9b294a588" /> ![SQL](https://img.shields.io/badge/-SQL-00758F?logo=mysql&logoColor=white) ![JavaScript](https://img.shields.io/badge/-JavaScript-yellow?logo=javascript&logoColor=white) ![HTML](https://img.shields.io/badge/-HTML-e34c26?logo=html5&logoColor=white) ![CSS](https://img.shields.io/badge/-CSS-1572B6?logo=css3&logoColor=white) <br> <br> ![Docker](https://img.shields.io/badge/-Docker-2496ED?logo=docker&logoColor=white) ![Git](https://img.shields.io/badge/-Git-F05032?logo=git&logoColor=white) ![Linux](https://img.shields.io/badge/-Linux-FCC624?logo=linux&logoColor=000)
 <br><br><br><br>
 
 
-## 🚀 Projetos em Destaque
+## 🚀 Featured Projects
 
-### 📊 Análise Estatística em Pesquisa de Ciências do Esporte
-> Avaliação de indicadores de desempenho validados pela literatura científica.
-- **Mais de 100 indivíduos** amostrados ao longo do estudo
-- **Mais de 1.000 pontos de dados** coletados, limpos e estruturados
-- 3 testes em múltiplas etapas divididos entre fases pré/pós-intervenção
-- Pipeline estatístico completo, desde a coleta bruta até conclusões baseadas em evidências
-
-
-### 🏃 Classificação de Atividade Física com Sensores Vestíveis
-> Pipeline de Ciência de Dados de ponta a ponta com dados reais de IMU de 9 indivíduos realizando 18 atividades físicas.
-- **Pipeline completo de pré-processamento** — interpolação de valores ausentes, filtragem de ruído e engenharia de recursos (magnitude da aceleração Euclidiana)
-- **Classificador Random Forest** distinguindo repouso, caminhada e corrida a partir de sinais de sensores brutos
-- Detecção de zonas de frequência cardíaca e estimativa de gasto calórico por atividade usando metodologia MET
-- Modelo de ML com **98% de acurácia** no Relatório de Classificação
+### 📊 Statistical Analysis in Sports Science Research
+> Evaluation of performance indicators validated by the scientific literature.
+- **Over 100 individuals** sampled throughout the study
+- **Over 1,000 data points** collected, cleaned, and structured
+- 3 multi-stage tests divided into pre- and post-intervention phases
+- Complete statistical pipeline, from raw data collection to evidence-based conclusions
 
 
-### 🏦 Web App com SQL para Instituições Financeiras ⏳ *(em andamento)*
-> Trazendo funcionalidades semelhantes ao SQL para uma interface front-end — sem necessidade de comandos.
-- Filtrar, ordenar e consultar dados de clientes por múltiplas dimensões
-- Cobertura: **produtos**, **score de crédito**, **comportamento de pagamento** e **perfil do investidor**
-- Construído para capacitar equipes não técnicas com insights rápidos e confiáveis
+### 🏃 Physical Activity Classification with Wearable Sensors
+> End-to-end data science pipeline using real IMU data from 9 individuals performing 18 physical activities.
+- **Complete preprocessing pipeline** — missing value interpolation, noise filtering, and feature engineering (Euclidean acceleration magnitude)
+- **Random Forest classifier** distinguishing between rest, walking, and running based on raw sensor signals
+- Heart rate zone detection and estimation of caloric expenditure per activity using the MET methodology
+- ML model with **98% accuracy** in the Classification Report
 
 
-### 🖥️ HomeLab com Linux — Servidor Local & Virtualização
-> Um sandbox pessoal para armazenamento de dados, virtualização e gerenciamento de processos.
-- Virtualização e containers no Docker
-- Gestão de memória para processos concorrentes
+### 🏦 Web App with SQL for Financial Institutions ⏳ *(in progress)*
+> Bringing SQL-like functionality to a front-end interface—no commands required.
+- Filter, sort, and query customer data across multiple dimensions
+- Coverage: **products**, **credit score**, **payment behavior**, and **investor profile**
+- Built to empower non-technical teams with fast, reliable insights
+
+
+### 🖥️ HomeLab with Linux — Local Server & Virtualization
+> A personal sandbox for data storage, virtualization, and process management.
+- Virtualization and Docker containers
+- Memory management for concurrent processes
 - Hardware: Rock64
-- Sistema Operacional: Diet-Pi (Debian)
+- Operating System: Diet-Pi (Debian)
 
 ---
 
-## 📌 Interesses
+## 📌 Interests
 
 ```
- Processamento de Dados      →   Transformar dados não estruturados em resultados
- Machine Learning & IA       →   Modelos preditivos que realmente funcionam
- Análise de KPIs             →   Métricas que impulsionam decisões reais
- Engenharia de Dados         →   Pipelines limpos, fundamentos confiáveis
- Desenvolvimento de Software →   Criar soluções e produtos inovadores
- Servidores & IoT            →   Brincar, aprender, quebrar coisas (de forma segura)
+ Data Processing          →   Turning unstructured data into results
+ Machine Learning & AI    →   Predictive models that actually work
+ KPI Analysis             →   Metrics that drive real decisions
+ Data Engineering         →   Clean pipelines, reliable fundamentals
+ Software Development     →   Creating innovative solutions and products
+ Servers & IoT            →   Playing, learning, breaking things (safely)
 
 ```
